@@ -37,26 +37,24 @@
   <!-- GAMBAR SURAT (DESIGN TIDAK DIUBAH) -->
   <img src="For you.png" alt="Surat untuk C">
 
-  <!-- MUSIK -->
+  <!-- MUSIK (VOLUME SUDAH DIPERLAHANKAN) -->
   <audio id="bgm" loop>
     <source src="lagu.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-    // Jalan SEKALI saat layar pertama kali diklik
     document.body.addEventListener('click', () => {
-      // mainkan musik
       const audio = document.getElementById('bgm');
+      audio.volume = 0.4;   // 🔈 40% volume
       audio.play();
 
-      // confetti pertama
+      // confetti lembut
       confetti({
         particleCount: 120,
         spread: 80,
         origin: { y: 0.6 }
       });
 
-      // confetti kedua (lembut)
       setTimeout(() => {
         confetti({
           particleCount: 60,
