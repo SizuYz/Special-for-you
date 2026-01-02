@@ -5,18 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Untuk C</title>
 
-  <!-- confetti library -->
+  <!-- Library Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <style>
     body {
       margin: 0;
-      background: #000;
+      background: black;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       overflow: hidden;
+      cursor: pointer;
     }
 
     img {
@@ -33,25 +34,37 @@
 </head>
 <body>
 
-  <!-- GANTI NAMA FILE SESUAI GAMBAR KAMU -->
+  <!-- GAMBAR SURAT (DESIGN TIDAK DIUBAH) -->
   <img src="For you.png" alt="Surat untuk C">
 
-  <script>
-    // confetti pas pertama dibuka
-    confetti({
-      particleCount: 120,
-      spread: 80,
-      origin: { y: 0.6 }
-    });
+  <!-- MUSIK -->
+  <audio id="bgm" loop>
+    <source src="lagu.mp3" type="audio/mpeg">
+  </audio>
 
-    // confetti kedua dikit, biar lembut
-    setTimeout(() => {
+  <script>
+    // Jalan SEKALI saat layar pertama kali diklik
+    document.body.addEventListener('click', () => {
+      // mainkan musik
+      const audio = document.getElementById('bgm');
+      audio.play();
+
+      // confetti pertama
       confetti({
-        particleCount: 60,
-        spread: 100,
-        origin: { y: 0.4 }
+        particleCount: 120,
+        spread: 80,
+        origin: { y: 0.6 }
       });
-    }, 800);
+
+      // confetti kedua (lembut)
+      setTimeout(() => {
+        confetti({
+          particleCount: 60,
+          spread: 100,
+          origin: { y: 0.4 }
+        });
+      }, 800);
+    }, { once: true });
   </script>
 
 </body>
